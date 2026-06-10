@@ -1,3 +1,5 @@
-import "./styles.css";
-console.log("Working! Yipeeee!");
-const myMom = "mom";
+// import "./styles.css";
+
+export function sum(a, b) {
+  return a + b;
+}
