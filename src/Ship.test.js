@@ -1,4 +1,3 @@
-import { experiments } from "webpack";
 import { Ship } from "./Ship";
 
 describe("Ship", () => {
