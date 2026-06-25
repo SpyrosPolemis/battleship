@@ -40,6 +40,7 @@ describe("Gameboard", () => {
   it("recieves attack on empty square", () => {
     gameboard.recieveAttack(...[0, 1]);
     expect(gameboard.board[0][1].hit).toBe(true);
+    expect(gameboard.missedAttacks).toContainEqual([0, 1]);
   });
 
   it("recieves attack on ship square", () => {

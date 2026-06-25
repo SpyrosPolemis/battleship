@@ -7,6 +7,8 @@ export class Gameboard {
         this.board[i][j] = { ship: null, hit: false };
       }
     }
+
+    this.missedAttacks = [];
   }
 
   placeShip(ship, coords, orientation = "h") {
@@ -71,6 +73,9 @@ export class Gameboard {
 
     if (this.board[x][y].ship !== null) {
       this.board[x][y].ship.markHit();
+    } else {
+      this.missedAttacks.push([x, y]);
     }
+    console.log(this.missedAttacks);
   }
 }
