@@ -1,7 +1,8 @@
-import { experiments } from "webpack";
 import { Ship } from "./Ship";
 
 describe("Ship", () => {
+  let myShip;
+
   beforeEach(() => {
     myShip = new Ship(3);
   });
