@@ -46,8 +46,6 @@ export class Gameboard {
     }
 
     for (let i = coords[0]; i < coords[0] + ship.length; i++) {
-      console.log(i);
-      console.log(this.board[i][coords[1]]);
       if (this.board[i][coords[1]].ship !== null) {
         return false;
       }
@@ -60,5 +58,19 @@ export class Gameboard {
     }
 
     return true;
+  }
+
+  recieveAttack(x, y) {
+    // input: a pair of numbers, x and y, as coordinates
+
+    if (this.board[x][y].hit === true) {
+      return;
+    }
+
+    this.board[x][y].hit = true;
+
+    if (this.board[x][y].ship !== null) {
+      this.board[x][y].ship.markHit();
+    }
   }
 }

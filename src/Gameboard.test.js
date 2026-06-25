@@ -36,4 +36,15 @@ describe("Gameboard", () => {
   it("handles ship overflow", () => {
     expect(gameboard.placeShip(new Ship(3), [7, 4])).toBeFalsy();
   });
+
+  it("recieves attack on empty square", () => {
+    gameboard.recieveAttack(...[0, 1]);
+    expect(gameboard.board[0][1].hit).toBe(true);
+  });
+
+  it("recieves attack on ship square", () => {
+    gameboard.recieveAttack(...[4, 4]);
+    expect(gameboard.board[4][4].hit).toBe(true);
+    expect(gameboard.board[4][4].ship.timesHit).toBe(1);
+  });
 });
