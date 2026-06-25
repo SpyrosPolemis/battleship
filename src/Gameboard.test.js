@@ -48,4 +48,11 @@ describe("Gameboard", () => {
     expect(gameboard.board[4][4].hit).toBe(true);
     expect(gameboard.board[4][4].ship.timesHit).toBe(1);
   });
+
+  it("reports all ships sunk", () => {
+    gameboard.recieveAttack(...[4, 4]);
+    gameboard.recieveAttack(...[5, 4]);
+    gameboard.recieveAttack(...[6, 4]);
+    expect(gameboard.checkAllSunk()).toBe(true);
+  });
 });

@@ -10,6 +10,7 @@ export class Gameboard {
 
     // Could also make this a method getMissedAttacks?
     this.missedAttacks = [];
+    this.ships = [];
   }
 
   placeShip(ship, coords, orientation = "h") {
@@ -27,6 +28,7 @@ export class Gameboard {
         this.board[coords[0]][i].ship = ship;
       }
     }
+    this.ships.push(ship);
 
     return true;
   }
@@ -77,6 +79,17 @@ export class Gameboard {
     } else {
       this.missedAttacks.push([x, y]);
     }
-    console.log(this.missedAttacks);
+  }
+
+  checkAllSunk() {
+    if (
+      this.ships.some((ship) => {
+        ship.sunk === false;
+      })
+    ) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }
