@@ -8,6 +8,7 @@ export class Gameboard {
       }
     }
 
+    // Could also make this a method getMissedAttacks?
     this.missedAttacks = [];
   }
 
@@ -36,12 +37,12 @@ export class Gameboard {
     if (coords[0] > 9 || coords[0] < 0 || coords[1] > 9 || coords[1] < 0) {
       return false;
     }
-    if ((orientation = "h")) {
+    if (orientation === "h") {
       if (coords[0] + ship.length > 9) {
         return false;
       }
     }
-    if ((orientation = "v")) {
+    if (orientation === "v") {
       if (coords[1] + ship.length > 9) {
         return false;
       }
