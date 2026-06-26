@@ -50,15 +50,20 @@ export class Gameboard {
       }
     }
 
-    for (let i = coords[0]; i < coords[0] + ship.length; i++) {
-      if (this.board[i][coords[1]].ship !== null) {
-        return false;
+    if (orientation === "h") {
+      for (let i = coords[0]; i < coords[0] + ship.length; i++) {
+        console.log("COORDS BITCH", coords);
+        if (this.board[i][coords[1]].ship !== null) {
+          return false;
+        }
       }
     }
 
-    for (let i = coords[1]; i < coords[1] + ship.length; i++) {
-      if (this.board[coords[0]][i].ship !== null) {
-        return false;
+    if (orientation === "v") {
+      for (let i = coords[1]; i < coords[1] + ship.length; i++) {
+        if (this.board[coords[0]][i].ship !== null) {
+          return false;
+        }
       }
     }
 
