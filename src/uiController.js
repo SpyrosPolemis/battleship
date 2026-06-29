@@ -1,5 +1,9 @@
 import { gameDriver } from "./gameDriver.js";
 
+const body = document.querySelector("body");
+const player1div = document.querySelector("#player1div");
+const player2div = document.querySelector("#player2div");
+
 export const uiController = {
   renderBoard(player) {
     const board = document.createElement("div");
@@ -13,19 +17,28 @@ export const uiController = {
           square.classList.add("hit");
           if (player.gameboard.board[i][j].ship !== null) {
             square.classList.add("ship");
+          } else {
+            square.classList.add("empty");
           }
         } else {
           square.addEventListener("click", () => {
-            if (gameDriver.activePlayer() === player) {
+            if (gameDriver.activePlayer() !== player) {
               player.gameboard.recieveAttack(...Array.from(square.id, Number));
               gameDriver.changeTurns();
               this.renderBoard(player);
+              this.renderBoard(gameDriver.otherPlayer(player));
             }
           });
         }
         board.append(square);
       }
     }
-    return board;
+    if (player.name === gameDriver.player1().name) {
+      player1div.innerHTML = "";
+      player1div.append(board);
+    } else {
+      player2div.innerHTML = "";
+      player2div.append(board);
+    }
   },
 };

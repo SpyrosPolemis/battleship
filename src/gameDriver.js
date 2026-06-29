@@ -1,18 +1,18 @@
 import { Player } from "./Player.js";
 import { Ship } from "./Ship.js";
 
-const player1 = new Player();
-const player2 = new Player();
+const player1 = new Player("1");
+const player2 = new Player("2");
 
 player1.gameboard.placeShip(new Ship(5), [0, 0], "h");
-player1.gameboard.placeShip(new Ship(4), [8, 0], "v");
-player1.gameboard.placeShip(new Ship(3), [4, 9]);
-player1.gameboard.placeShip(new Ship(3), [3, 5]);
-player1.gameboard.placeShip(new Ship(2), [8, 7]);
+player1.gameboard.placeShip(new Ship(4), [0, 8], "v");
+player1.gameboard.placeShip(new Ship(3), [9, 4]);
+player1.gameboard.placeShip(new Ship(3), [5, 3]);
+player1.gameboard.placeShip(new Ship(2), [7, 8]);
 
 player2.gameboard.placeShip(new Ship(5), [0, 0], "h");
-player2.gameboard.placeShip(new Ship(4), [8, 0], "v");
-player2.gameboard.placeShip(new Ship(3), [4, 9]);
+player2.gameboard.placeShip(new Ship(4), [0, 8], "v");
+player2.gameboard.placeShip(new Ship(3), [9, 4]);
 player2.gameboard.placeShip(new Ship(3), [3, 5]);
 player2.gameboard.placeShip(new Ship(2), [8, 7]);
 
@@ -37,5 +37,13 @@ export const gameDriver = {
   },
   activePlayer() {
     return activePlayer;
+  },
+  otherPlayer(player) {
+    // return the other player
+    if (player === player1) {
+      return player2;
+    } else {
+      return player1;
+    }
   },
 };
