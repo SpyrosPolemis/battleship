@@ -28,6 +28,9 @@ export const uiController = {
               gameDriver.computerTurn();
               this.renderBoard(player);
               this.renderBoard(gameDriver.otherPlayer(player));
+              if (gameDriver.player2().gameboard.checkAllSunk()) {
+                this.displayVictor(gameDriver.player1());
+              }
             }
           });
         }
@@ -41,5 +44,11 @@ export const uiController = {
       player2div.innerHTML = "";
       player2div.append(board);
     }
+  },
+  displayVictor(player) {
+    const victoryMsg = document.createElement("div");
+    victoryMsg.textContent = `${player.name} has won!`;
+    victoryMsg.classList.add("victory");
+    body.append(victoryMsg);
   },
 };

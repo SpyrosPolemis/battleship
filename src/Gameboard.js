@@ -86,11 +86,7 @@ export class Gameboard {
   }
 
   checkAllSunk() {
-    if (
-      this.ships.some((ship) => {
-        ship.sunk === false;
-      })
-    ) {
+    if (this.ships.some((ship) => ship.sunk === false)) {
       return false;
     } else {
       return true;
