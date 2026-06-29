@@ -46,4 +46,19 @@ export const gameDriver = {
       return player1;
     }
   },
+  computerTurn() {
+    let coords = randomCoords();
+    while (player2.gameboard.board[coords[0]][coords[1]].hit) {
+      console.log("hmm");
+      coords = randomCoords();
+    }
+    player1.gameboard.recieveAttack(...coords);
+    this.changeTurns();
+  },
 };
+
+function randomCoords() {
+  const y = Math.floor(Math.random() * (9 - 0 + 1));
+  const x = Math.floor(Math.random() * (9 - 0 + 1));
+  return [y, x];
+}

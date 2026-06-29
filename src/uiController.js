@@ -20,11 +20,12 @@ export const uiController = {
           } else {
             square.classList.add("empty");
           }
-        } else {
+        } else if (gameDriver.player2() === player) {
           square.addEventListener("click", () => {
             if (gameDriver.activePlayer() !== player) {
               player.gameboard.recieveAttack(...Array.from(square.id, Number));
               gameDriver.changeTurns();
+              gameDriver.computerTurn();
               this.renderBoard(player);
               this.renderBoard(gameDriver.otherPlayer(player));
             }
